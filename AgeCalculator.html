@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+   
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4203a9, #90bafc);
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.calculator h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.calculator h1 span {
+    color: #ffff76;
+}
+
+.input-box {
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 14px;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    border-radius: 5px;
+    min-width: 180px;
+}
+
+.input-box button {
+    background: #ffff76;
+    border: 0;
+    outline: 0;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    
+}
+
+.input-box button:hover {
+    background: #ffdb58;
+}
+
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.insta {
+    margin-top: 30px;
+}
+
+#result span {
+    color: #ffff76;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .calculator h1 {
+        font-size: 35px;
+    }
+
+    .input-box {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .input-box input,
+    .input-box button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #result {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator h1 {
+        font-size: 28px;
+    }
+
+    .input-box {
+        padding: 10px;
+    }
+
+    .input-box input,
+    .input-box button {
+        font-size: 16px;
+    }
+
+    #result {
+        font-size: 16px;
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1>Zubaer's<br><span>Age Calculator</span></h1>
+            <p>Here you can calculate your age....</p>
+            <div class="input-box">
+                <input type="date" id="date">
+                <button onclick="calculateAge()">Calculate</button>
+            </div>
+            <p id="result"></p>
+        </div>
+        <a href="https://www.instagram.com/abdullahalzubaerofficial/" target="_blank">
+            <svg class="insta" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="#fff">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.424.39a4.998 4.998 0 011.845 1.072 5.002 5.002 0 011.072 1.846c.15.454.333 1.253.39 2.423.058 1.267.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.39 2.424a4.998 4.998 0 01-1.072 1.846 5.002 5.002 0 01-1.845 1.072c-.454.15-1.253.333-2.423.39-1.267.058-1.647.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.424-.39a4.998 4.998 0 01-1.845-1.072 5.002 5.002 0 01-1.072-1.846c-.15-.454-.333-1.253-.39-2.423C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.39-2.424a4.998 4.998 0 011.072-1.846A5.002 5.002 0 015.54 2.623c.454-.15 1.253-.333 2.423-.39C8.416 2.175 8.796 2.163 12 2.163zm0 1.837c-3.17 0-3.548.012-4.796.07-1.11.051-1.712.233-2.106.387a3.124 3.124 0 00-1.158.748 3.127 3.127 0 00-.748 1.158c-.154.394-.336.996-.387 2.106-.058 1.248-.07 1.626-.07 4.796s.012 3.548.07 4.796c.051 1.11.233 1.712.387 2.106.173.431.408.823.748 1.158.33.33.727.575 1.158.748.394.154.996.336 2.106.387 1.248.058 1.626.07 4.796.07s3.548-.012 4.796-.07c1.11-.051 1.712-.233 2.106-.387a3.124 3.124 0 001.158-.748c.33-.33.575-.727.748-1.158.154-.394.336-.996.387-2.106.058-1.248.07-1.626.07-4.796s-.012-3.548-.07-4.796c-.051-1.11-.233-1.712-.387-2.106a3.124 3.124 0 00-.748-1.158 3.127 3.127 0 00-1.158-.748c-.394-.154-.996-.336-2.106-.387-1.248-.058-1.626-.07-4.796-.07zm0 3.77a5.27 5.27 0 110 10.54 5.27 5.27 0 010-10.54zm0 1.837a3.433 3.433 0 100 6.866 3.433 3.433 0 000-6.866zm5.833-.87a1.24 1.24 0 112.48 0 1.24 1.24 0 01-2.48 0z"/>
+            </svg>
+        </a>
+        <p>For more project builds: <a href="https://bespoke-sprite-c64d28.netlify.app/">Click here</a></p>
+    </div>
+
+    <script>
+
+let userInput = document.getElementById("date");
+userInput.max = new Date().toISOString().split("T")[0];
+let result = document.getElementById("result");
+
+function calculateAge(){
+    let birthDate = new Date(userInput.value);
+
+    let d1 = birthDate.getDate();
+    let m1 = birthDate.getMonth() + 1;
+    let y1 = birthDate.getFullYear();
+
+    let today = new Date();
+
+    let d2 = today.getDate(); 
+    let m2 = today.getMonth() + 1; 
+    let y2 = today.getFullYear(); 
+
+    let d3, m3, y3;
+    y3 = y2 - y1;
+
+    if (m2 >= m1) {
+        m3 = m2 - m1;
+    } else {
+        y3--;
+        m3 = 12 + m2 - m1;
+    }
+
+    if (d2 >= d1) {
+        d3 = d2 - d1;
+    } else {
+        m3--;
+        d3 = getDaysInMonth(y1, m1) + d2 - d1;
+    }
+
+    if (m3 < 0) {
+        m3 = 11;
+        y3--;
+    }
+
+    result.innerHTML = `You are <span>${y3}</span> years, <span>${m3}</span> months, and <span>${d3}</span> days old.`;
+}
+
+function getDaysInMonth(year, month) {
+    return new Date(year, month, 0).getDate();
+}
+
+    </script>
+</body>
+</html>
